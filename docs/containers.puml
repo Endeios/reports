@@ -1,0 +1,18 @@
+@startuml deployment
+
+actor user
+database "Calculations db" as calculations_db
+rectangle "Our application" #lightgray;line.dashed {
+    component application
+    component "calculation listener" AS calc_listener
+}
+queue "Reports queue" as queue
+actor "external publisher" as pub
+
+user -[#blue]-> application : retrieves reports
+application -[#blue]-> calculations_db : retrieves current state
+pub -[#green]-> queue : 1) adds a report calculation
+calc_listener -[#green]-> queue : 2) listens for new report events
+calc_listener -[#green]-> calculations_db : 3) saves the new calculation into the db
+
+@enduml
