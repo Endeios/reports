@@ -57,3 +57,8 @@ Details in [SendMessageNoSpring.java](src/main/java/io/endeios/reports/SendMessa
 - https://spring.io/guides/gs/messaging-rabbitmq/
 - https://start.spring.io/
 - https://www.baeldung.com/spring-boot-console-app
+- https://docs.spring.io/spring-hateoas/docs/current/reference/html/#fundamentals.obtaining-links.entity-links
+- https://docs.spring.io/spring-hateoas/docs/current/reference/html/
+- https://www.baeldung.com/spring-hateoas-tutorial
+- https://docs.spring.io/spring-security/site/docs/5.0.x/reference/html/test-mockmvc.html
+- https://reflectoring.io/spring-boot-web-controller-test/
