@@ -6,15 +6,15 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
 
-@Entity
+@Entity(name = "calculation_event")
 @Data
 public class Event {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "event_times")
+    @Column(name = "event_timestamp")
     private Date event_times;
 
     @Column(name = "origin")

@@ -44,7 +44,7 @@ handle_message_system() {
       exit
    fi
    if [[ "$1" == "stop" ]]; then
-      echo "Stopping db.."
+      echo "Stopping message system.."
       podman stop rabbit
       podman rm rabbit
       exit
@@ -52,8 +52,7 @@ handle_message_system() {
 }
 
 main() {
-    echo "$1"
-    echo "$2"
+    # echo "$1 $2"
     if [[ "$1" == "db" ]]; then
       handle_db "$2"
       exit

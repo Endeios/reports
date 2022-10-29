@@ -16,6 +16,25 @@ The reports database stores the calculation events
 this way one can do calculations and visualize the list of possible things that one can observe, ask for statistics
 bla bla bla
 
+## The message format at exchange level
+Spring has a sort of format to send messages to the exchange, so, in order to send events and still use
+the simple configuration from spring, one has to set some parameters.
+Nothing major, all makes sense, it is enough to know.
+
+| Property           | value        |
+|--------------------|--------------|
+| `priority`         | `0`          |
+| `delivery_mode`    | `2`          |
+| `content_encoding` | `UTF-8`      |
+| `content_type`     | `text/plain` |
+
+### How does a spring message looks like in a queue
+![How does a spring message looks like in a queue](docs/default_spring_message_on_rabbit.png)
+
+### How does a completed form for spring template looks like on rabbit form
+![How does a completed form for spring template looks like on rabbit form](docs/exchange_input_form.png)
+
+
 
 
 # Links
@@ -26,4 +45,10 @@ bla bla bla
 - https://medium.com/codex/liquibase-tutorial-3ea08691a7a9
 - https://docs.liquibase.com/concepts/introduction-to-liquibase.html
 - https://docs.liquibase.com/tools-integrations/springboot/springboot.html
--  https://juliuskrah.com/tutorial/2017/02/26/database-migration-with-liquibase-hikaricp-hibernate-and-jpa/
+- https://juliuskrah.com/tutorial/2017/02/26/database-migration-with-liquibase-hikaricp-hibernate-and-jpa/
+- https://sharats.me/posts/shell-script-best-practices/
+- https://hub.docker.com/_/rabbitmq/
+- https://javatodev.com/lombok-spring-boot/
+- https://spring.io/guides/gs/messaging-rabbitmq/
+- https://start.spring.io/
+- https://www.baeldung.com/spring-boot-console-app
