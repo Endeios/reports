@@ -4,7 +4,7 @@ import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import io.endeios.reports.listeners.MessageSystem;
+import io.endeios.reports.config.MessageSystem;
 
 public class SendMessageNoSpring {
     public static void main(String[] args) throws Exception {

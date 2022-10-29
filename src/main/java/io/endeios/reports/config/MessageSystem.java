@@ -1,5 +1,6 @@
-package io.endeios.reports.listeners;
+package io.endeios.reports.config;
 
+import io.endeios.reports.listeners.EventsListener;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
