@@ -34,8 +34,13 @@ Nothing major, all makes sense, it is enough to know.
 ### How does a completed form for spring template looks like on rabbit form
 ![How does a completed form for spring template looks like on rabbit form](docs/exchange_input_form.png)
 
+## Message format for the system
 
+The messages are supposed to be in form
 
+`<source>:<name>:<value>`
+
+Details in [SendMessageNoSpring.java](src/main/java/io/endeios/reports/SendMessageNoSpring.java)
 
 # Links
 - https://stackoverflow.com/questions/41960588/liquibase-migration-on-startup-doesnt-work-using-spring-boot
