@@ -3,3 +3,7 @@ spring:
     enabled: true
     change-log: classpath:db/changelog/changelog-master.yaml
     default-schema: public
+  rabbitmq:
+    username: guest
+    password: guest
+    port: 5672
