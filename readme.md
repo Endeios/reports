@@ -77,3 +77,5 @@ Details in [SendMessageNoSpring.java](src/main/java/io/endeios/reports/SendMessa
 - https://datatracker.ietf.org/doc/html/draft-kelly-json-hal#section-4.1.2
 - https://stackoverflow.com/questions/25819477/relationship-and-difference-between-hal-and-hateoas
 - http://restfulapi.io/hateoas-in-rest-service/
+## Testing
+- https://hellokoding.com/spring-boot-test-api-and-controller-layer-example-with-webmvctest-and-mockmvc/
