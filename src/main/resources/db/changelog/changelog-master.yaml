@@ -1,3 +1,5 @@
 databaseChangeLog:
   - include: 
       file: db/changelog/2022/10/create_calculation_event_table.sql
+  - include:
+      file: db/changelog/2022/10/add_sample_events.sql

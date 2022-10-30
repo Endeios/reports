@@ -36,7 +36,8 @@ public class IndexTest {
     public void indexHomeHasWidgets() throws Exception {
         ResultActions result = mvc.perform(get("/"));
         System.out.println(result.andReturn().getResponse().getContentAsString());
-        result.andExpect(jsonPath("name").isString());
+        result.andExpect(jsonPath("_embedded.widgetList[0].name").isString());
+        result.andExpect(jsonPath("_embedded.widgetList[0].name").value("test"));
         result.andExpect(status().isOk());
 
     }
