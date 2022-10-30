@@ -37,16 +37,16 @@ class WidgetServiceTest {
     @Test
     void returnAWidgetWhenThereAreEventsFromANameAndOrigin() {
 
-        List<Widget> widgets = new ArrayList<>();
-        widgets.add(new Widget("weatherStation", "temperature"));
-        widgets.add(new Widget( "weatherStation", "humidity"));
-        widgets.add(new Widget( "weatherStation", "hpa"));
+        List<io.endeios.reports.domain.Widget> widgets = new ArrayList<>();
+        widgets.add(new io.endeios.reports.domain.Widget("weatherStation", "temperature"));
+        widgets.add(new io.endeios.reports.domain.Widget( "weatherStation", "humidity"));
+        widgets.add(new io.endeios.reports.domain.Widget( "weatherStation", "hpa"));
         when(widgetRepo.getAll()).thenReturn(widgets);
 
-        widgets = widgetService.getAll();
-        assertThat(widgets.size()).isEqualTo(3);
+        List<Widget> dtoWidgets = widgetService.getAll();
+        assertThat(dtoWidgets.size()).isEqualTo(3);
         Widget expectedWidget = new Widget("weatherStation", "temperature");
-        assertThat(widgets).contains(expectedWidget);
+        assertThat(dtoWidgets).contains(expectedWidget);
 
     }
 }

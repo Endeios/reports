@@ -1,6 +1,6 @@
 package io.endeios.reports.appLogic.queries;
 
-import io.endeios.reports.web.dto.Widget;
+import io.endeios.reports.domain.Widget;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.ArrayList;

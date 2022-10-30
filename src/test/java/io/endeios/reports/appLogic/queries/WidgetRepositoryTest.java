@@ -2,7 +2,7 @@ package io.endeios.reports.appLogic.queries;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import io.endeios.reports.web.dto.Widget;
+import io.endeios.reports.domain.Widget;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
