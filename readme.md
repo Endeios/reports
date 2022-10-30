@@ -43,6 +43,9 @@ The messages are supposed to be in form
 Details in [SendMessageNoSpring.java](src/main/java/io/endeios/reports/SendMessageNoSpring.java)
 
 # Links
+## The Spring starter
+- https://start.spring.io/
+## Liquibase and database
 - https://stackoverflow.com/questions/41960588/liquibase-migration-on-startup-doesnt-work-using-spring-boot
 - https://dbeaver.io/download/
 - https://eliedhr.medium.com/evolving-your-database-in-a-spring-boot-application-with-liquibase-709aad8336c8
@@ -51,14 +54,26 @@ Details in [SendMessageNoSpring.java](src/main/java/io/endeios/reports/SendMessa
 - https://docs.liquibase.com/concepts/introduction-to-liquibase.html
 - https://docs.liquibase.com/tools-integrations/springboot/springboot.html
 - https://juliuskrah.com/tutorial/2017/02/26/database-migration-with-liquibase-hikaricp-hibernate-and-jpa/
+## ShellScripting
 - https://sharats.me/posts/shell-script-best-practices/
+## Rabbit and messaging
 - https://hub.docker.com/_/rabbitmq/
 - https://javatodev.com/lombok-spring-boot/
 - https://spring.io/guides/gs/messaging-rabbitmq/
-- https://start.spring.io/
+## Console apps
 - https://www.baeldung.com/spring-boot-console-app
+## HATEOAS and HAL 
+
+| Name    | explanation                                    |
+|---------|------------------------------------------------|
+| HATEOAS | Hyper Media As The Engine Of Application State |
+| HAL     | Hyper Text Application Language                |
+
 - https://docs.spring.io/spring-hateoas/docs/current/reference/html/#fundamentals.obtaining-links.entity-links
 - https://docs.spring.io/spring-hateoas/docs/current/reference/html/
 - https://www.baeldung.com/spring-hateoas-tutorial
 - https://docs.spring.io/spring-security/site/docs/5.0.x/reference/html/test-mockmvc.html
 - https://reflectoring.io/spring-boot-web-controller-test/
+- https://datatracker.ietf.org/doc/html/draft-kelly-json-hal#section-4.1.2
+- https://stackoverflow.com/questions/25819477/relationship-and-difference-between-hal-and-hateoas
+- http://restfulapi.io/hateoas-in-rest-service/
