@@ -42,6 +42,10 @@ The messages are supposed to be in form
 
 Details in [SendMessageNoSpring.java](src/main/java/io/endeios/reports/SendMessageNoSpring.java)
 
+## TODO
+
+- FInish Hateos and Hal links
+
 # Links
 ## The Spring starter
 - https://start.spring.io/
