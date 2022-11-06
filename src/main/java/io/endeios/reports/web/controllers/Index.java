@@ -3,10 +3,11 @@ package io.endeios.reports.web.controllers;
 import io.endeios.reports.appLogic.WidgetService;
 import io.endeios.reports.appLogic.exceptions.NoSuchOriginException;
 import io.endeios.reports.appLogic.exceptions.NoSuchWidgetException;
+import io.endeios.reports.web.controllers.links.IndexLink;
 import io.endeios.reports.web.dto.Widget;
 import io.endeios.reports.web.dto.WidgetData;
-import org.springframework.hateoas.CollectionModel;
-import org.springframework.hateoas.EntityModel;
+import io.endeios.reports.web.dto.errors.Error;
+import org.springframework.hateoas.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -45,11 +46,19 @@ public class Index {
     }
 
     @ExceptionHandler
-    public ResponseEntity<NoSuchOriginException> handleException(NoSuchOriginException exception){
-        return new ResponseEntity<>(exception, null, HttpStatus.INTERNAL_SERVER_ERROR);
+    public ResponseEntity<Error> handleException(NoSuchOriginException exception){
+        return getErrorResponseEntity(exception);
     }
+
+    private static ResponseEntity<Error> getErrorResponseEntity(RuntimeException exception) {
+        Error error = new Error(exception);
+        Link indexLink = Link.of("/", new IndexLink());
+        error.add(indexLink);
+        return new ResponseEntity<>(error, null, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     @ExceptionHandler
-    public ResponseEntity<NoSuchWidgetException> handleException(NoSuchWidgetException exception){
-        return new ResponseEntity<>(exception, null, HttpStatus.INTERNAL_SERVER_ERROR);
+    public ResponseEntity<Error> handleException(NoSuchWidgetException exception){
+        return getErrorResponseEntity(exception);
     }
 }

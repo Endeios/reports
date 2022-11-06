@@ -83,6 +83,17 @@ public class IndexTest {
     }
 
     @Test
+    void returnLinkToWidgetsWhenNoWidgetsOfASource() throws Exception {
+        doThrow(new NoSuchOriginException("origin"))
+                .when(widgetService).getWidgetsOf("origin");
+
+        ResultActions result = mvc.perform(get("/origin/"));
+        result.andExpect(status().isInternalServerError());
+        result.andExpect(jsonPath("_links.index.href").value("/"));
+        assertThat(result.andReturn().getResponse().getContentAsString()).contains("There is not an origin called origin");
+    }
+
+    @Test
     void returnTheListOfAcquisitionsGivenTheCorrectPath() throws Exception {
         List<DataPoint> datapoints = new ArrayList<>();
         datapoints.add(new DataPoint(Instant.parse("2022-10-31T15:00:00.00Z"), BigDecimal.valueOf(21.0) ));
@@ -107,4 +118,16 @@ public class IndexTest {
         result.andExpect(status().isInternalServerError());
         assertThat(result.andReturn().getResponse().getContentAsString()).contains("Could not find a widget in origin/name");
     }
+
+    @Test
+    void returnIndexWhenNoSuchWidget() throws Exception {
+        doThrow(new NoSuchWidgetException("origin","name"))
+                .when(widgetService).getWidgetData("origin", "name");
+
+        ResultActions result = mvc.perform(get("/origin/name"));
+        result.andExpect(status().isInternalServerError());
+        result.andExpect(jsonPath("_links.index.href").value("/"));
+        assertThat(result.andReturn().getResponse().getContentAsString()).contains("Could not find a widget in origin/name");
+    }
 }
+
