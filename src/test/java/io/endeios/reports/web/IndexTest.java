@@ -89,7 +89,7 @@ public class IndexTest {
 
         ResultActions result = mvc.perform(get("/origin/"));
         result.andExpect(status().isInternalServerError());
-        result.andExpect(jsonPath("_links.index.href").value("/"));
+        result.andExpect(jsonPath("_links.index.href").value("http://localhost/"));
         assertThat(result.andReturn().getResponse().getContentAsString()).contains("There is not an origin called origin");
     }
 
@@ -126,7 +126,7 @@ public class IndexTest {
 
         ResultActions result = mvc.perform(get("/origin/name"));
         result.andExpect(status().isInternalServerError());
-        result.andExpect(jsonPath("_links.index.href").value("/"));
+        result.andExpect(jsonPath("_links.index.href").value("http://localhost/"));
         assertThat(result.andReturn().getResponse().getContentAsString()).contains("Could not find a widget in origin/name");
     }
 }

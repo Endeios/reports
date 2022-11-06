@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/")
@@ -52,7 +53,7 @@ public class Index {
 
     private static ResponseEntity<Error> getErrorResponseEntity(RuntimeException exception) {
         Error error = new Error(exception);
-        Link indexLink = Link.of("/", new IndexLink());
+        Link indexLink = linkTo(methodOn(Index.class).get()).withRel(new IndexLink());
         error.add(indexLink);
         return new ResponseEntity<>(error, null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
