@@ -55,6 +55,7 @@ public class IndexTest {
         System.out.println(result.andReturn().getResponse().getContentAsString());
         result.andExpect(jsonPath("_embedded.widgetList[0].name").isString());
         result.andExpect(jsonPath("_embedded.widgetList[0].name").value("test"));
+        result.andExpect(jsonPath("_embedded.widgetList[0]._links.self.href").value("http://localhost/origin/test"));
         result.andExpect(status().isOk());
 
     }
@@ -70,6 +71,9 @@ public class IndexTest {
         ResultActions result = mvc.perform(get("/origin/"));
         result.andExpect(status().isOk());
         result.andExpect(jsonPath("_embedded.widgetList").isArray());
+        result.andExpect(jsonPath("_embedded.widgetList[0]._links.self.href").value("http://localhost/origin/test1"));
+        result.andExpect(jsonPath("_embedded.widgetList[1]._links.self.href").value("http://localhost/origin/test2"));
+        result.andExpect(jsonPath("_embedded.widgetList[2]._links.self.href").value("http://localhost/origin/test3"));
     }
 
     @Test
@@ -107,6 +111,9 @@ public class IndexTest {
         result.andExpect(jsonPath("origin").value("origin"));
         result.andExpect(jsonPath("points[0].instant").value("2022-10-31T15:00:00Z"));
         result.andExpect(jsonPath("points[0].value").value(21.0));
+        result.andExpect(jsonPath("_links.self.href").value("http://localhost/origin/test1"));
+        result.andExpect(jsonPath("_links.index.href").value("http://localhost/"));
+        System.out.println(result.andReturn().getResponse().getContentAsString());
 
     }
     @Test

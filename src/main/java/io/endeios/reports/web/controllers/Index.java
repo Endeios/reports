@@ -28,26 +28,38 @@ public class Index {
     }
 
     @GetMapping
-    public CollectionModel<Widget> get(){
+    public CollectionModel<Widget> get() {
         List<Widget> widgets = widgetService.getAll();
-        return CollectionModel.of(widgets,linkTo(Index.class).withSelfRel());
+        addSelfLinkToWidgets(widgets);
+        return CollectionModel.of(widgets, linkTo(Index.class).withSelfRel());
     }
 
-    @RequestMapping(value = "/{origin}",method = RequestMethod.GET)
-    public CollectionModel<Widget> getWidgetsOfAnOrigin(@PathVariable("origin") String origin){
-            List<Widget> widgets = widgetService.getWidgetsOf(origin);
-            return CollectionModel.of(widgets, linkTo(Index.class).withSelfRel());
+    private static void addSelfLinkToWidgets(List<Widget> widgets) {
+        for (Widget widget :
+                widgets) {
+            widget.add(linkTo(methodOn(Index.class).getWidgetByOriginAnName(widget.getOrigin(), widget.getName())).withSelfRel());
+        }
+    }
+
+    @RequestMapping(value = "/{origin}", method = RequestMethod.GET)
+    public CollectionModel<Widget> getWidgetsOfAnOrigin(@PathVariable("origin") String origin) {
+        List<Widget> widgets = widgetService.getWidgetsOf(origin);
+        addSelfLinkToWidgets(widgets);
+        return CollectionModel.of(widgets, linkTo(Index.class).withSelfRel());
     }
 
     @RequestMapping(value = "/{origin}/{name}", method = RequestMethod.GET)
     public EntityModel<WidgetData> getWidgetByOriginAnName(
             @PathVariable("origin") String origin,
-            @PathVariable("name") String name){
-        return EntityModel.of(widgetService.getWidgetData(origin, name));
+            @PathVariable("name") String name) {
+        EntityModel<WidgetData> widget = EntityModel.of(widgetService.getWidgetData(origin, name));
+        widget.add(linkTo(methodOn(Index.class).getWidgetByOriginAnName(origin, name)).withSelfRel());
+        widget.add(linkTo(methodOn(Index.class).get()).withRel(new IndexLink()));
+        return widget;
     }
 
     @ExceptionHandler
-    public ResponseEntity<Error> handleException(NoSuchOriginException exception){
+    public ResponseEntity<Error> handleException(NoSuchOriginException exception) {
         return getErrorResponseEntity(exception);
     }
 
@@ -59,7 +71,7 @@ public class Index {
     }
 
     @ExceptionHandler
-    public ResponseEntity<Error> handleException(NoSuchWidgetException exception){
+    public ResponseEntity<Error> handleException(NoSuchWidgetException exception) {
         return getErrorResponseEntity(exception);
     }
 }
